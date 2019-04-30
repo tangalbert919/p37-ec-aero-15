@@ -5,7 +5,7 @@ This project provides a capability to control the fan of Gigabyte Aero 14Kv8 lap
 This program is based on the work of Jason Ertel at https://github.com/jertel/p37-ec 
 who wrote a program for some older Gigabyte Laptop models.
 
-This pgoram monitors and controls the embedded controller (EC) on of the Laptop
+This prgoram monitors and controls the embedded controller (EC) on of the Laptop
 
 The EC is responsible for auto-adjusting the fan speed, however,this functionality 
 is not activated by default. Therefore, the fan is running all the time.
@@ -68,7 +68,18 @@ There are also sample scripts for switching between normal mode, gaming mode
 and silent mode. However, like this program in general, those scripts should only 
 be used if you have the laptop model for which this program was written.
 
-#Be Careful
+# Required Kernel Module
+You need to be able to load module ec_sys into your Linux kernel.
+The module will be loaded automatically by the program so you don't need to 
+load it yourself. But if you are having problems even though you run the
+program as root then the reason might be that your Linux kernel was not compiled 
+with the ec_sys module. You can check whether the module is available on your system
+by executing `sudo modprobe ec_sys`
+
+(For example, on Debian Stretch this module is not available whereas on the
+Fedora 30 it is available.)
+
+# Be Careful
 *This project comes without any warranty*
 If you have a different laptop model than the one for which this program is 
 intended then first double-check the correct EC register values by observing 
@@ -78,5 +89,6 @@ RWEverything.
 
 Writing values into the wrong registers may damage your laptop!
 
-# Disclaimer 
+
+# Disclaimer
 *This project is not affiliated with GIGA-BYTE Technology Co. Ltd.*
