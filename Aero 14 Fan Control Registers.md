@@ -3,7 +3,7 @@ This file briefly describes the fan control registers of the embedded controller
 (EC) of the Gigabyte Aero 14Kv8 Laptop (the Aero 14 model with Core i7-8750H 
 processor).
 
-ALL OF THIS INFORMATION IS UNOFFICIAl AND WITHOUT WARRANTY.
+*ALL OF THIS INFORMATION IS UNOFFICIAl AND WITHOUT WARRANTY.*
 
 This information is based on what I understood by analyzing the EC registers.
 It is not official information and I ask you to please be careful when manipulating
@@ -24,26 +24,32 @@ even if the CPU and GPU have low temperatures.
 The default mode is active if all the special mode bits (i.e., 08.6 and 0C.4 and 0D.0) are set to 0.
 
 Register states for normal mode:
+```
  08.6=0 (quiet mode off)
  0C.4=0 (gaming mode off)
  0D.0=0 (custom mode off)
- 
+```
+
 ## Quiet fan mode 
 In this mode the fan will be off completely when the CPU and GPU are cool enough.
 
 Register states for quiet mode:
+```
  08.6=1 (quiet mode on)
  0D.0=0 (custom mode off)
  0C.4=0 (gaming mode off)
+```
  
 ## Gaming fan mode
 In this mode the fan is always spinning at minimum speetd even if the CPU  and GPU
 have low temperatures and the fan will switch to higher speeds more quickly.
  
 Register states for gaming mode:
+```
  08.6=0 (quiet mode off)
  0D.0=0 (custom mode off)
  0C.4=1 (gaming mode off)
+```
 
 ## Custom fan mode 'auto maximum'
 In this mode the fan is always spinning at minimum speed even if the CPU  and GPU
@@ -52,10 +58,12 @@ above a certain maximum speed (instead, the components will be hotter and will
 eventually do thermal throttling). 
 
 Register states for custom auto-maximum mode:
+```
  06.4=0 (custom mode type: auto-maximum) 
  08.6=0 (quiet mode off)
  0C.4=0 (gaming mode off)
  0D.0=1 (custom mode on)
+```
 
 The registers B0 and B1 contain the maximum speed for the fan. 
 Both registers must be set to identical values.
@@ -79,12 +87,14 @@ The mapping between hex values for the registers and percent in fan speed are as
 
 
 So to set the fan to 50% maximum speed one would have to set the following register values
+```
  06.4=0
  08.6=0
  0C.4=0
  0D.0=1
  B0=72
  B1=72
+```
 
 Warning: do not set values below 30%! The fan-speeds seem to be controlled with pulse-width modulation; it is not safe to use values below 30%!
 
@@ -93,10 +103,12 @@ Warning: do not set values below 30%! The fan-speeds seem to be controlled with 
 This mode sets the fans to a constant speed, independent of the temperature.
 
 Register states for custom fixed maximum mode:
+```
  06.4=1 (custom mode type: fixed speed) 
  08.6=0 (quiet mode off)
  0C.4=0 (gaming mode off)
  0D.0=1 (custom mode on)
+```
 
 
 As for the previous mode, the fan speed is controlled with registers B0 and B1. 
@@ -107,12 +119,14 @@ one writes some kind of thermal monitor that wants to control the fans directly
 based on its own temperature curve.
 
 So to set the fan to 50% fixed speed one would have to set the following register values
+```
  06.4=1
  08.6=0
  0C.4=0
  0D.0=1
  B0=72
  B1=72
+```
 
 
 ## Custom fan mode 'deep control'
@@ -122,11 +136,13 @@ to set the desired fan speeds in relation to different temperatures.
 This mode seems to be controlled through bit 0D.7
 
 The register flags which activate this mode are as follows:
+```
  06.4=1 (not sure if the value of this bit matters or not of 0D.7 is set to 1)
  08.6=0 (quiet mode off)
  0C.4=0 (gaming mode off)
  0D.0=1 (custom mode on)
  0D.7=1 (deep control mode on)
+```
 
 It is not clear how and where the custom fan control curve is stored.
 
