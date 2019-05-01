@@ -1,21 +1,27 @@
 # Fan control register values for the Aero 14Kv8
-This file briefly describes the fan control registers of the embedded controller
-(EC) of the Gigabyte Aero 14Kv8 Laptop (the Aero 14 model with Core i7-8750H 
-processor).
+This file briefly describes the fan control registers and some others 
+of the embedded controller (EC) of the Gigabyte Aero 14Kv8 Laptop 
+(the Aero 14 model with Core i7-8750H processor).
 
 *ALL OF THIS INFORMATION IS UNOFFICIAl AND WITHOUT WARRANTY.*
 
-This information is based on what I understood by analyzing the EC registers.
-It is not official information and I ask you to please be careful when manipulating
-EC register values.
+Most of this information is based on the work of Jason Ertel (https://github.com/jertel)
+for an older Gigabyte model which I checked against the Aero 14Kv8.
+
+The fan information is also based on what I understood by analyzing the EC registers.
+
+None of this official information and I ask you to please be careful when manipulating
+EC register values, especially before applying these values to other laptop models.
 
 The register explanations below have the following format
  RR.B = value
+
 
 * RR: stands for the register address of the EC - for example 0C
 * .B: stands for one bit in this register, counting the bits from 0 to 7. If the bit reference is missing then the value refers to the whole byte and not just to a single bit
 * value: stands for the value. If the address is for a single bit then the value can of course only be 0 or 1, if the address is for a whole byte then the value can be from 00 to FF. 
 
+All numbers are hex numbers, e.g. 0C stands for register 0x0C.
 
 ## Normal fan mode 
 This is the default fan mode where the fan is always spinning at minimum speed 
@@ -148,9 +154,34 @@ It is not clear how and where the custom fan control curve is stored.
 
 ## Keyboard backlight
 The keyboard backlight is controlled by register D7.
+(This can also be controlled via the keyboard by pressing FN+Space)
+
 It has three possible values
 * 00 -> Backlight off
 * 01 -> Backlight level 1
 * 02 -> Backlight level 2 (bright)
 
 E.g. setting `D7=02` turns the keyboard backlight to the brighter of the two levels.
+
+## Control Bluetooth
+Bluetooth is controlled by bit 01.7
+
+I.e. setting `01.7=1` turns bluetooth on and setting `01.7=0` turns bluetooth off.
+
+## Wifi
+Wifi is controlled by bit 02.6
+(This can also be controlled via the keyboard by pressing FN+F2)
+
+I.e. setting `02.6=1` turns wifi on and setting `02.6=0` turns wifi off.
+
+## Disable Screen
+Screen can be turned off through bit 09.03.
+(This can also be controlled via the keyboard by pressing FN+F6)
+
+I.e. setting `09.3=1` turns the screen off and setting `09.1=1` turns it back on.
+
+## Touchpad
+Touchpad activation is controlled by bit 01.7
+
+I.e. setting `03.5=0` turns the tuchpad off and setting `03.5=1` turns it back on.
+
