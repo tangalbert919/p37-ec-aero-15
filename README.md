@@ -24,10 +24,6 @@ allows any value to be written to any register it is possible to cause undesired
 results, with potentially physically damaging results. Therefore, do not use this
 program unless you accept the risks mentioned above.
 
-# Compilation
-First, ensure g++ is available on your distribution. Then compile via the
-following command:
-`g++ src/p37ec-aero.c -o bin/p37ec-aero`
 
 # Usage
 The program may have permission errors even if it is run with sudo.
@@ -68,6 +64,7 @@ There are also sample scripts for switching between normal mode, gaming mode
 and silent mode. However, like this program in general, those scripts should only 
 be used if you have the laptop model for which this program was written.
 
+
 # Required Kernel Module
 You need to be able to load module ec_sys into your Linux kernel.
 The module will be loaded automatically by the program so you don't need to 
@@ -76,8 +73,11 @@ program as root then the reason might be that your Linux kernel was not compiled
 with the ec_sys module. You can check whether the module is available on your system
 by executing `sudo modprobe ec_sys`
 
-(For example, on Debian Stretch this module is not available whereas on the
-Fedora 30 it is available.)
+(For example, on Debian Stretch this module is sadly not available whereas on the
+Fedora 30 it is available. Except for building your own kernel I don't know
+what would be a way around this if your distribution does not offer the required
+module.)
+
 
 # Be Careful
 *This project comes without any warranty*
@@ -88,6 +88,22 @@ Laptop EC registers can be monitored on Windows with the program
 RWEverything.
 
 Writing values into the wrong registers may damage your laptop!
+
+
+# Compilation
+There is a statically compiled binary in the bin/ folder which should work
+on any 64bit-based Linux kernel. This means that you don't need to compile
+anything.
+
+However,  if you want to compile from source then first, ensure g++ is 
+available on your distribution. Then compile via the following command:
+`g++ src/p37ec-aero.c -o p37ec-aero`
+
+There are also two trivial shell scripts to compile a statically linked
+or a dynamically linked binary.
+If you want to compile statically then make sure that you have
+libstdc++-static and libc-static installed and use the following command:
+`g++ -static -static-libgcc -static-libstdc++ -o p37ec-aero src/p37ec-aero.c`
 
 
 # Disclaimer
