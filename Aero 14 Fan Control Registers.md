@@ -1,4 +1,4 @@
-# Fan control register values for the Aero 14Kv8 ===
+# Fan control register values for the Aero 14Kv8
 This file briefly describes the fan control registers of the embedded controller
 (EC) of the Gigabyte Aero 14Kv8 Laptop (the Aero 14 model with Core i7-8750H 
 processor).
@@ -137,7 +137,7 @@ This mode seems to be controlled through bit 0D.7
 
 The register flags which activate this mode are as follows:
 ```
- 06.4=1 (not sure if the value of this bit matters or not of 0D.7 is set to 1)
+ 06.4=1 (not sure if the value of this bit matters or not if 0D.7 is set to 1)
  08.6=0 (quiet mode off)
  0C.4=0 (gaming mode off)
  0D.0=1 (custom mode on)
