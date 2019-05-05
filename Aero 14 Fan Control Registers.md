@@ -38,6 +38,7 @@ Register states for normal mode:
 
 ## Quiet fan mode 
 In this mode the fan will be off completely when the CPU and GPU are cool enough.
+*Important:* This mode will also reduce CPU speed by preventing the CPU from using turbo frequencies, whereby the CPU will be *much* cooler but also slower.
 
 Register states for quiet mode:
 ```
@@ -54,7 +55,7 @@ Register states for gaming mode:
 ```
  08.6=0 (quiet mode off)
  0D.0=0 (custom mode off)
- 0C.4=1 (gaming mode off)
+ 0C.4=1 (gaming mode on)
 ```
 
 ## Custom fan mode 'auto maximum'
@@ -118,13 +119,14 @@ Register states for custom fixed maximum mode:
 
 
 As for the previous mode, the fan speed is controlled with registers B0 and B1. 
-Again, it is impossible to use values below 30%.
+Again, it is dangerous to use values below 30%.
+
 The value 00 is accepted and turns the fans off completely but this may not be 
 safe because your hardware could overheat so it seems like a very bad idea unless
-one writes some kind of thermal monitor that wants to control the fans directly
-based on its own temperature curve.
+someone writes some kind of thermal monitor that controls the fans directly by
+regularly updating the fixed fan speed based on its own temperature curve.
 
-So to set the fan to 50% fixed speed one would have to set the following register values
+To set the fan to 50% fixed speed one would have to set the following register values
 ```
  06.4=1
  08.6=0
@@ -178,10 +180,16 @@ I.e. setting `02.6=1` turns wifi on and setting `02.6=0` turns wifi off.
 Screen can be turned off through bit 09.03.
 (This can also be controlled via the keyboard by pressing FN+F6)
 
-I.e. setting `09.3=1` turns the screen off and setting `09.1=1` turns it back on.
+I.e. setting `09.3=1` turns the build-in screen off and setting `09.1=0` turns it back on.
 
 ## Touchpad
 Touchpad activation is controlled by bit 01.7
 
-I.e. setting `03.5=0` turns the tuchpad off and setting `03.5=1` turns it back on.
+I.e. setting `03.5=0` turns the touchpad off and setting `03.5=1` turns it back on.
+
+
+## Webcam
+Webcam availability is controlled by bit 01.6
+
+I.e. setting `01.6=0` turns the webcam off such that it is unavailable to applications and setting `01.6=1` turns it back on.
 

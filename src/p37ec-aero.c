@@ -109,7 +109,7 @@ int main(int argc, char** args) {
 //  commented-out values are from an older Gigabyte model; not all of these seem to be valid for the Aero 14kv8
 //    printf("  USB Charge During Sleep     [0x01.5]: %d\n", read1(ec, 0x01, 5));
 //    printf("  USB Charge During Hibernate [0x07.2]: %d\n", read1(ec, 0x07, 2));
-//    printf("  Camera Enabled              [0x01.6]: %d\n", read1(ec, 0x01, 6));
+    printf("  Camera Enabled                [0x01.6]: %d\n", read1(ec, 0x01, 6));
     printf("  Bluetooth Enabled             [0x01.7]: %d\n", read1(ec, 0x01, 7));
     printf("  WiFi Enabled                  [0x02.6]: %d\n", read1(ec, 0x02, 6));
     printf("  Touchpad Enabled              [0x03.5]: %d\n", read1(ec, 0x03, 5));
