@@ -193,3 +193,22 @@ Webcam availability is controlled by bit 01.6
 
 I.e. setting `01.6=0` turns the webcam off such that it is unavailable to applications and setting `01.6=1` turns it back on.
 
+## Charging Mode
+There are different charging modes (Default, Express, Quality, Custom)
+
+Default mode is enabled by setting the following register values
+* 0F.2=0
+* C6.0=0
+* A9=0x61
+
+Express Charge Mode seems to be enabled by setting the following register values (not sure if additional register values are needed):
+* 0F.2=1
+* C6.0=0
+* A9=0x61
+
+Custom mode limits the maximum amount up to which the battery should be charged. By charging the battery to less than 100% the battery will not age as quickly because with Lithium-Ion batteries, the last few percent of the charge will cause stronger wear than the earlier portion of the charge.
+
+Custom mode is enabled by setting the following registers:
+* 0F.2 = 1
+* C6.0 = 1
+* A9 = <Maximum value up to which to charge>. Register A9 must be set to the maximum percent value up to which the charging should be done. The value is encoded as hex value, e.g.: 0x64 -> 100%, 0x5A -> 90%, 0x55 -> 85%, 0x50 -> 80%, 0x46 -> 70%, 0x3C -> 60%)
