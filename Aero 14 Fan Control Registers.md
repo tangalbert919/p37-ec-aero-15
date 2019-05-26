@@ -1,6 +1,7 @@
 # Fan and other control register values for the Aero 14Kv8
 This file briefly describes the fan control registers and some others 
-of the embedded controller (EC) of the Gigabyte Aero 14Kv8 Laptop 
+of the embedded controller
+ (EC) of the Gigabyte Aero 14Kv8 Laptop 
 (the Aero 14 model with Core i7-8750H processor).
 
 *ALL OF THIS INFORMATION IS UNOFFICIAl AND WITHOUT WARRANTY.*
@@ -154,6 +155,11 @@ The register flags which activate this mode are as follows:
 
 It is not clear how and where the custom fan control curve is stored.
 
+
+## Current Fan Speed
+The current fan speed can be read from register 0xFC (current speed of the CPU fan) and register 0xFE (current speed of the GPU fan).
+For both registers have a value range from 0 if the fan is standing still up to 22 if the fan is runnign at maximum speed.
+
 ## Keyboard backlight
 The keyboard backlight is controlled by register D7.
 (This can also be controlled via the keyboard by pressing FN+Space)
@@ -209,7 +215,7 @@ Express Charge Mode seems to be enabled by setting the following register values
 Custom mode is enabled by setting the following registers:
 * 0F.2 = 1
 * C6.0 = 1
-* A9 = [Maximum value up to which to charge]. Register A9 must be set to the maximum percent value up to which the charging should be done. The value is encoded as hex value, e.g.: 0x64 -> 100%, 0x5A -> 90%, 0x55 -> 85%, 0x50 -> 80%, 0x46 -> 70%, 0x3C -> 60%)
+* A9 = [Maximum value up to which to charge]. Register A9 must be set to the maximum percent value up to which the charging should be done. The value is encoded as hex value, e.g.: 0x64 -> 100%, 0x5A -> 90%, 0x55 -> 85%, 0x50 -> 80%, 0x46 -> 70%, 0x3C -> 60%
 
 Custom mode limits the maximum amount up to which the battery should be charged. By charging the battery to less than 100% the battery will not age as quickly because with Lithium-Ion batteries, the last few percent of the charge will cause stronger wear than the earlier portion of the charge.
 
