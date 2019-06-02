@@ -24,6 +24,13 @@ allows any value to be written to any register it is possible to cause undesired
 results, with potentially physically damaging results. Therefore, do not use this
 program unless you accept the risks mentioned above.
 
+Note: I also created a fan profile for nbfc (https://github.com/hirschmann/nbfc)
+which allows more fine-grained control and provides a nice balance between having
+a completely silent fan on idle but without throttling the CPU turbo which the built-
+in silent mode does. This makes the fan spin up when there is a bit of load but
+not otherwise and is, in my opinion a good compromise between silence and performance.
+Therefore, using nbfc might be a better alternative to the built-in fan modes of the 
+that laptop that you can activate with this program here.
 
 # Usage
 The program may have permission errors even if it is run with sudo.
