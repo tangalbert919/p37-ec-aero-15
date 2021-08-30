@@ -1,11 +1,11 @@
 # Overview
-This project provides a capability to control the fan of a Gigabyte Aero 14Kv8 laptop
-(i.e., the Aero 14 model with i7-8750H processor).
+This project provides a capability to control the fan of a Gigabyte Aero 15 Classic laptop
+(i.e., the Aero 15 model with i7-9750H processor).
 
-This program is based on the work of Jason Ertel at https://github.com/jertel/p37-ec 
+This program is based on the work of [Jason Ertel](https://github.com/jertel/p37-ec) 
 who wrote a program for some older Gigabyte Laptop models.
 
-This program monitors and controls the embedded controller (EC) on of the Laptop
+This program monitors and controls the embedded controller (EC) on the laptop.
 
 The EC is responsible for auto-adjusting the fan speed, however,this functionality 
 is not activated by default. Therefore, the fan is running all the time.
