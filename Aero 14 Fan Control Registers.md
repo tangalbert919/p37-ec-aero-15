@@ -77,21 +77,21 @@ The registers B0 and B1 contain the maximum speed for the fan.
 Both registers must be set to identical values.
 
 The mapping between hex values for the registers and percent in fan speed are as follows
-* 44 -> 30%
-* 50 -> 35%
-* 5B -> 40%
-* 67 -> 45%
-* 72 -> 50%
-* 7D -> 55%
-* 89 -> 60%
-* 94 -> 65%
-* A0 -> 70%
-* AB -> 75%
-* B7 -> 80%
-* C2 -> 85%
-* CE -> 90%
-* D9 -> 95%
-* E5 -> 100%
+* 0x44 (68 decimal)  -> 30%
+* 0x50 (80 decimal)  -> 35%
+* 0x5B (91 decimal)  -> 40%
+* 0x67 (103 decimal) -> 45%
+* 0x72 (114 decimal) -> 50%
+* 0x7D (125 decimal) -> 55%
+* 0x89 (137 decimal) -> 60%
+* 0x94 (148 decimal) -> 65%
+* 0xA0 (160 decimal) -> 70%
+* 0xAB (171 decimal) -> 75%
+* 0xB7 (183 decimal) -> 80%
+* 0xC2 (194 decimal) -> 85%
+* 0xCE (206 decimal) -> 90%
+* 0xD9 (217 decimal) -> 95%
+* 0xE5 (229 decimal) -> 100%
 
 
 So to set the fan to 50% maximum speed one would have to set the following register values
