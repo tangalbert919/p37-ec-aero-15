@@ -1,3 +1,11 @@
+# DISCLAIMER
+I do not recommend using this project to control the embedded controller (EC) within any
+Gigabyte Aero or AORUS laptop. I am currently developing a kernel driver that can do
+what this project does in a much safer way without needing to determine EC registers.
+
+You can find the kernel driver [here](https://github.com/tangalbert919/gigabyte-laptop-wmi).
+It will be compatible with all Gigabyte Aero and AORUS laptops.
+
 # Overview
 This project provides a capability to control the fan of a Gigabyte Aero 15 Classic laptop
 (i.e., the Aero 15 model with i7-9750H processor).
